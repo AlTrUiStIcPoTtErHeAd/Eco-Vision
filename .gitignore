@@ -1,10 +1,60 @@
-venv/
-__pycache__/
-*.pyc
-.env
-uploads/
+# ----------------------
+# ROOT / GENERAL
+# ----------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
 
-# frontend
-node_modules/
-.next/
+# ----------------------
+# IDE / EDITOR
+# ----------------------
+.vscode/
+.idea/
+*.iml
+
+# ----------------------
+# FLUTTER APP (mobile_app)
+# ----------------------
+mobile_app/.dart_tool/
+mobile_app/.packages
+mobile_app/.pub-cache/
+mobile_app/.pub/
+mobile_app/build/
+mobile_app/.flutter-plugins
+mobile_app/.flutter-plugins-dependencies
+
+# Platform-specific (generated)
+mobile_app/linux/flutter/
+mobile_app/linux/runner/
+
+# ----------------------
+# BACKEND (Python / FastAPI)
+# ----------------------
+backend/__pycache__/
+backend/*.py[cod]
+backend/*.sqlite3
+
+# Virtual environments
+backend/venv/
+backend/env/
+backend/.venv/
+
+# Environment variables
+backend/.env
+backend/.env.*
+
+# ----------------------
+# TEST / CACHE
+# ----------------------
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ----------------------
+# BUILD / DIST
+# ----------------------
 dist/
+build/
+*.egg-info/

@@ -169,7 +169,7 @@ export async function predictWaste(image: File) {
       method: "POST",
       headers: getAuthHeadersMultipart(),
       body: formData,
-      signal: createTimeoutSignal(15000), // longer timeout for file upload
+      signal: createTimeoutSignal(30000), // 30s — TF model inference can take a moment
     });
     return handleResponse<PredictionResult>(response);
   } catch (error) {
@@ -419,7 +419,9 @@ export interface User {
 }
 
 export interface PredictionResult {
+  filename?: string;
   waste_type: string;
+  confidence: number;         // 0.0 – 1.0 (from model softmax output)
   recyclable: boolean;
   disposal_instructions?: string;
   ideas?: string[];

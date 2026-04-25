@@ -1,0 +1,29 @@
+# EcoVision Backend Dependencies
+# Install with: venv/bin/python3 -m pip install -r requirements.txt
+
+# ── Web framework ──────────────────────────────────────────────────────────
+fastapi==0.136.1
+uvicorn==0.46.0
+python-multipart==0.0.26
+starlette==1.0.0
+
+# ── Database ───────────────────────────────────────────────────────────────
+pymongo==4.17.0
+
+# ── ML / Data ─────────────────────────────────────────────────────────────
+# TF 2.21 on macOS arm64 bundles Keras 3.13.x (matches saved model version).
+# Do NOT install standalone keras>=3.13 — it requires Python 3.11+.
+# The compatibility patch in ml_service.py bridges keras 3.12 → 3.13 format.
+tensorflow==2.21.0
+pillow>=10.0.0
+numpy>=1.26.0,<3.0.0
+
+# ── Auth ───────────────────────────────────────────────────────────────────
+bcrypt>=4.0.0
+passlib==1.7.4
+python-jose==3.5.0
+PyJWT==2.12.1
+
+# ── Validation ────────────────────────────────────────────────────────────
+pydantic[email]==2.13.3
+annotated-types==0.7.0

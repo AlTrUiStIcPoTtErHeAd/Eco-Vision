@@ -1,0 +1,63 @@
+# ----------------------
+# ROOT / GENERAL
+# ----------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# ----------------------
+# IDE / EDITOR
+# ----------------------
+.vscode/
+.idea/
+*.iml
+
+# ----------------------
+# FLUTTER APP (mobile_app/ecovision)
+# ----------------------
+mobile_app/ecovision/.dart_tool/
+mobile_app/ecovision/.packages
+mobile_app/ecovision/.pub-cache/
+mobile_app/ecovision/.pub/
+mobile_app/ecovision/build/
+mobile_app/ecovision/.flutter-plugins
+mobile_app/ecovision/.flutter-plugins-dependencies
+
+# Platform-specific (generated)
+mobile_app/ecovision/linux/flutter/
+mobile_app/ecovision/linux/runner/
+
+# Web build output
+mobile_app/ecovision/web/icons/
+
+# ----------------------
+# BACKEND (Python / FastAPI assumed)
+# ----------------------
+backend/__pycache__/
+backend/*.py[cod]
+backend/*.sqlite3
+
+# Virtual environments
+backend/venv/
+backend/env/
+backend/.venv/
+
+# Environment variables
+backend/.env
+backend/.env.*
+
+# ----------------------
+# TEST / CACHE
+# ----------------------
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ----------------------
+# BUILD / DIST
+# ----------------------
+dist/
+build/
+*.egg-info/

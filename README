@@ -1,0 +1,118 @@
+# 🌱 EcoVision AI
+
+EcoVision AI is an intelligent waste classification platform that uses Machine Learning + FastAPI + Web/Mobile Integration to identify and categorize waste from images.
+
+---
+
+## 🚀 Features
+
+- 🔐 User Authentication (Login / Signup)
+- 📸 Image Upload API
+- 🧠 AI-based Waste Classification (TensorFlow / Keras)
+- 📊 Prediction with Confidence Score
+- 👨‍💼 Admin Panel
+- 📝 Post & User Management
+- 🌐 REST API with FastAPI
+- 📱 Mobile + Web Ready Backend
+
+---
+
+## 🧠 ML Model
+
+- Model: wasteClassify.keras
+- Framework: TensorFlow + Keras
+- Input: Image
+- Output: Waste category + confidence
+
+---
+
+## ⚙️ Tech Stack
+
+### Backend:
+- FastAPI
+- MongoDB
+- TensorFlow / Keras
+- Uvicorn
+
+### Frontend:
+- Next.js / React
+
+### Others:
+- JWT Authentication
+- File Upload Handling
+- REST APIs
+
+---
+
+## 📁 Project Structure
+
+Eco-Vision/ │ ├── backend/ │   ├── app/ │   │   ├── routes/ │   │   ├── models/ │   │   ├── services/ │   │   ├── utils/ │   │   └── main.py │   ├── uploads/ │   └── test_model.py │ ├── frontend/ ├── mobile_app/ └── requirements.txt
+
+---
+
+## ⚡ Setup Instructions
+
+### 1. Clone Repo
+git clone https://github.com/vedant-dev27/Eco-Vision.git cd Eco-Vision
+
+### 2. Create Virtual Environment
+python3.10 -m venv venv source venv/bin/activate
+
+### 3. Install Dependencies
+pip install -r requirements.txt
+
+### 4. Run Backend
+cd backend uvicorn app.main:app --reload
+
+---
+
+## 🌐 API Endpoints
+
+### Health Check
+GET /
+
+### Upload Image
+POST /upload/image
+
+### Predict Waste
+POST /predict
+
+Response:
+json {   "prediction": "plastic",   "confidence": 0.92 } 
+
+---
+
+## 🧪 Testing
+
+Open:
+http://127.0.0.1:8000/docs
+
+Use Swagger UI to test APIs.
+
+---
+
+## 🚀 Deployment
+
+Backend deployed using Render:
+
+🔗 Live URL: (add your deployed link here)
+
+---
+
+## 👨‍💻 Author
+
+Adeesh Agrawal  
+EcoVision Project 🚀
+
+---
+
+## 📌 Future Improvements
+
+- Real-time camera detection
+- Better model accuracy
+- Cloud storage for images
+- Mobile app integration
+
+---
+
+## ⭐ If you like this project, give it a s

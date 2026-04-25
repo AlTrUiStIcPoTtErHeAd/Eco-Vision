@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
                   brightness: Brightness.dark,
                 ),
           ),
-          home: ApiService.isLoggedIn ? const HomeScreen() : const LoginPage(),
+          home: const HomeScreen(),
         );
       },
     );

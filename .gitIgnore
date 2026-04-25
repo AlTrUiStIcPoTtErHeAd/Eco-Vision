@@ -15,25 +15,22 @@ Thumbs.db
 *.iml
 
 # ----------------------
-# FLUTTER APP (mobile_app/ecovision)
+# FLUTTER APP (mobile_app)
 # ----------------------
-mobile_app/ecovision/.dart_tool/
-mobile_app/ecovision/.packages
-mobile_app/ecovision/.pub-cache/
-mobile_app/ecovision/.pub/
-mobile_app/ecovision/build/
-mobile_app/ecovision/.flutter-plugins
-mobile_app/ecovision/.flutter-plugins-dependencies
+mobile_app/.dart_tool/
+mobile_app/.packages
+mobile_app/.pub-cache/
+mobile_app/.pub/
+mobile_app/build/
+mobile_app/.flutter-plugins
+mobile_app/.flutter-plugins-dependencies
 
 # Platform-specific (generated)
-mobile_app/ecovision/linux/flutter/
-mobile_app/ecovision/linux/runner/
-
-# Web build output
-mobile_app/ecovision/web/icons/
+mobile_app/linux/flutter/
+mobile_app/linux/runner/
 
 # ----------------------
-# BACKEND (Python / FastAPI assumed)
+# BACKEND (Python / FastAPI)
 # ----------------------
 backend/__pycache__/
 backend/*.py[cod]

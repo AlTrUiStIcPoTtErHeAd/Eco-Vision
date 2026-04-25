@@ -3,6 +3,8 @@ import 'package:ecovision/screens/scan_screen.dart';
 import 'package:ecovision/screens/map_screen.dart';
 import 'package:ecovision/screens/profile_screen.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:ecovision/screens/login_screen.dart';
+import 'package:ecovision/services/api_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
                   brightness: Brightness.dark,
                 ),
           ),
-          home: const HomeScreen(),
+          home: ApiService.isLoggedIn ? const HomeScreen() : const LoginPage(),
         );
       },
     );

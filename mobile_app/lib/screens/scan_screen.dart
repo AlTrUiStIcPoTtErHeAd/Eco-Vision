@@ -1,3 +1,4 @@
+import 'package:ecovision/screens/analysis_page.dart';
 import 'package:flutter/material.dart';
 
 class ScanScreen extends StatelessWidget {
@@ -7,7 +8,17 @@ class ScanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Camera"),
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const AnalysisPage(),
+              ),
+            );
+          },
+          child: Text("Scan"),
+        ),
       ),
     );
   }

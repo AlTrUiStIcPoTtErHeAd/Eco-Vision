@@ -4,14 +4,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as img;
 
-class ScanScreen extends StatefulWidget {
-  const ScanScreen({super.key});
+class AnalysisPage extends StatefulWidget {
+  const AnalysisPage({super.key});
 
   @override
-  State<ScanScreen> createState() => _ScanScreenState();
+  State<AnalysisPage> createState() => _AnalysisPageState();
 }
 
-class _ScanScreenState extends State<ScanScreen> {
+class _AnalysisPageState extends State<AnalysisPage> {
   final ImagePicker _picker = ImagePicker();
   File? _image;
   String? _result;
@@ -52,7 +52,7 @@ class _ScanScreenState extends State<ScanScreen> {
     try {
       // Load model
       final interpreter = await Interpreter.fromAsset(
-        'assets/waste_model.tflite',
+        'assets/model.tflite',
       );
 
       // Preprocess image → 224x224 float32

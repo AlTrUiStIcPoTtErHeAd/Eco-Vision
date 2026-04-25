@@ -1,21 +1,59 @@
-from fastapi import FastAPI
-from app.routes import auth, predict, post, user, admin
+import os
 
-# ✅ FIRST create app
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
+# Import all routes
+from app.routes import auth, predict, post, user, admin, upload
+
+# -----------------------------
+# CREATE FASTAPI APP
+# -----------------------------
 app = FastAPI(
     title="EcoVision AI Backend",
     version="1.0.0",
     description="Backend API for EcoVision AI services.",
 )
 
-# ✅ THEN include routers
-app.include_router(auth.router)
-app.include_router(predict.router)
-app.include_router(post.router)
-app.include_router(user.router)
-app.include_router(admin.router)
+# -----------------------------
+# CORS CONFIGURATION (IMPORTANT)
+# -----------------------------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # allow all origins for development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
+# -----------------------------
+# STATIC FILES (FOR IMAGE ACCESS)
+# -----------------------------
+# Ensure uploads directory exists before mounting, otherwise StaticFiles will
+# raise a RuntimeError at startup when the directory is missing.
+UPLOADS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "uploads")
+UPLOADS_DIR = os.path.normpath(UPLOADS_DIR)
+os.makedirs(UPLOADS_DIR, exist_ok=True)
 
+app.mount("/uploads", StaticFiles(directory=UPLOADS_DIR), name="uploads")
+
+# -----------------------------
+# ROUTERS
+# -----------------------------
+app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
+app.include_router(predict.router, tags=["Prediction"])
+app.include_router(post.router, prefix="/posts", tags=["Posts"])
+app.include_router(user.router, prefix="/user", tags=["User"])
+app.include_router(admin.router, prefix="/admin", tags=["Admin"])
+app.include_router(upload.router, prefix="/upload", tags=["Upload"])
+
+# -----------------------------
+# HEALTH CHECK
+# -----------------------------
 @app.get("/", tags=["Health"])
-def health_check() -> dict:
-    return {"status": "ok", "message": "EcoVision AI backend is running."}
+def health_check():
+    return {
+        "status": "ok",
+        "message": "EcoVision AI backend is running.",
+    }

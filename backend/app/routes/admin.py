@@ -4,14 +4,16 @@ from fastapi import APIRouter, Header, HTTPException, Path, status
 
 from app.services.admin_service import (
     delete_post_by_id,
+    delete_user_by_id,
     get_activity,
     get_total_co2_saved,
     get_users_count,
+    list_users,
 )
 from app.utils.auth import AuthTokenError, decode_access_token_strict
 
 
-router = APIRouter(prefix="/admin", tags=["Admin"])
+router = APIRouter(tags=["Admin"])
 
 
 def _extract_admin_payload(authorization: str) -> Dict:
@@ -77,5 +79,26 @@ def delete_post_endpoint(
     except ValueError as exc:
         detail = str(exc)
         if detail == "Post not found.":
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=detail) from exc
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=detail) from exc
+
+
+@router.get("/users", status_code=status.HTTP_200_OK)
+def list_users_endpoint(authorization: str = Header(...)) -> Dict[str, object]:
+    _extract_admin_payload(authorization)
+    return {"users": list_users()}
+
+
+@router.delete("/users/{id}", status_code=status.HTTP_200_OK)
+def delete_user_endpoint(
+    id: str = Path(...),
+    authorization: str = Header(...),
+) -> Dict[str, str]:
+    _extract_admin_payload(authorization)
+    try:
+        return delete_user_by_id(id)
+    except ValueError as exc:
+        detail = str(exc)
+        if detail == "User not found.":
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=detail) from exc
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=detail) from exc

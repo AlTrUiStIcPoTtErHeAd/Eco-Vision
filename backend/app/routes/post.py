@@ -7,7 +7,7 @@ from app.services.post_service import create_post, get_all_posts
 from app.utils.auth import AuthTokenError, decode_access_token_strict
 
 
-router = APIRouter(prefix="/posts", tags=["Posts"])
+router = APIRouter(tags=["Posts"])
 
 
 def _extract_user_id_from_auth_header(authorization: str) -> str:

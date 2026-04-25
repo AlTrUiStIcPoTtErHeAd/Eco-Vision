@@ -5,7 +5,7 @@ from app.services.user_service import get_user_stats
 from app.utils.auth import AuthTokenError, decode_access_token_strict
 
 
-router = APIRouter(prefix="/user", tags=["User"])
+router = APIRouter(tags=["User"])
 
 
 def _extract_user_id_from_auth_header(authorization: str) -> str:

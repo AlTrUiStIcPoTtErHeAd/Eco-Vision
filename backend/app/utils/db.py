@@ -14,7 +14,14 @@ _mongo_client: Optional[MongoClient] = None
 def get_mongo_client() -> MongoClient:
     global _mongo_client
     if _mongo_client is None:
-        _mongo_client = MongoClient(MONGODB_URI)
+        # serverSelectionTimeoutMS prevents hanging if MongoDB is unreachable
+        _mongo_client = MongoClient(
+            MONGODB_URI,
+            serverSelectionTimeoutMS=5000,
+            connectTimeoutMS=5000,
+            socketTimeoutMS=10000,
+        )
+        print(f"✅ MongoDB client created: {MONGODB_URI}")
     return _mongo_client
 
 
